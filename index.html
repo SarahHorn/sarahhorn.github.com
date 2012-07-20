@@ -1,68 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <h1>POI Patterns</h1>
-  <canvas id='the-canvas' width='300' height='300'></canvas>
-  <script>
-    //TODO: Use strict mode.
-    (function () {
-      var frequency = 72,
-          armCircles = 1,
-          ballCircles = -2;
+<body>
 
-      var fullCircleRadians = Math.PI * 2;
+<div id="container" style="width:500px">
 
-      var fullWidth = 300,
-          fullHeight = 300;
+<div id="header" style="background-color:#FFA500;">
+<h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
 
-      var centerX = fullWidth / 2,
-          centerY = fullHeight / 2,
-          armCircleRadius  = 70,
-          armCirclePhase   = 0,
-          ballCircleRadius = 70,
-          ballCirclePhase  = fullCircleRadians / 2;
+<div id="menu" style="background-color:#FFD700;height:200px;width:100px;float:left;">
+<b>Menu</b><br />
+HTML<br />
+CSS<br />
+JavaScript</div>
 
-      var canvas = document.getElementById('the-canvas');
-      var ctx = canvas.getContext('2d');
+<div id="content" style="background-color:#EEEEEE;height:200px;width:400px;float:left;">
+Content goes here</div>
 
-      function iterate(armCircles, ballCircles, iteration) {
-        if(iteration > frequency) { return; }
+<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+Thanks for visiting</div>
 
-        var armAngle = fullCircleRadians * armCircles / frequency * iteration + armCirclePhase;
-        var armUnitX = Math.sin(armAngle),
-            armUnitY = Math.cos(armAngle);
-        var armX = centerX + armUnitX * armCircleRadius,
-            armY = centerY + armUnitY * armCircleRadius;
+</div>
 
-        var ballAngle = fullCircleRadians * ballCircles / frequency * iteration + ballCirclePhase;
-        var ballUnitX = Math.sin(ballAngle),
-            ballUnitY = Math.cos(ballAngle);
-        var ballX = armX + ballUnitX * ballCircleRadius,
-            ballY = armY + ballUnitY * ballCircleRadius;
-
-        ctx.fillStyle = 'rgba(255,255,255,0.016)';
-        ctx.fillRect(0, 0, fullWidth, fullHeight);
-
-        ctx.strokeStyle = 'grey';
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(armX, armY);
-        ctx.lineTo(ballX, ballY);
-        ctx.stroke();
-
-        ctx.fillStyle = 'green';
-        ctx.beginPath();
-        ctx.arc(armX, armY, 3, fullCircleRadians, false);
-        ctx.fill();
-
-        ctx.fillStyle = 'red';
-        ctx.beginPath();
-        ctx.arc(ballX, ballY, 5, fullCircleRadians, false);
-        ctx.fill();
-
-        setTimeout(function(){ iterate(armCircles, ballCircles, iteration + 1); }, 100);
-      }
-
-      iterate(armCircles, ballCircles, 0);
-    })();
-  </script>
+</body>
 </html>
